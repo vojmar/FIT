@@ -4,3 +4,9 @@ c:\users\vojmar\documents\visual studio 2015\Projects\Fiks1\Fiks1\bin\Debug\Fiks
 c:\users\vojmar\documents\visual studio 2015\Projects\Fiks1\Fiks1\obj\Debug\Fiks1.csprojResolveAssemblyReference.cache
 c:\users\vojmar\documents\visual studio 2015\Projects\Fiks1\Fiks1\obj\Debug\Fiks1.exe
 c:\users\vojmar\documents\visual studio 2015\Projects\Fiks1\Fiks1\obj\Debug\Fiks1.pdb
+C:\Users\vojmar\Source\Repos\FIT\Fiks1\Fiks1\bin\Debug\Fiks1.exe.config
+C:\Users\vojmar\Source\Repos\FIT\Fiks1\Fiks1\obj\Debug\Fiks1.exe
+C:\Users\vojmar\Source\Repos\FIT\Fiks1\Fiks1\obj\Debug\Fiks1.pdb
+C:\Users\vojmar\Source\Repos\FIT\Fiks1\Fiks1\bin\Debug\Fiks1.exe
+C:\Users\vojmar\Source\Repos\FIT\Fiks1\Fiks1\bin\Debug\Fiks1.pdb
+C:\Users\vojmar\Source\Repos\FIT\Fiks1\Fiks1\obj\Debug\Fiks1.csprojResolveAssemblyReference.cache

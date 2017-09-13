@@ -15,12 +15,13 @@ namespace Fiks1
             StreamReader reader = new StreamReader("./input.txt");
             int inputCount = Convert.ToInt32(reader.ReadLine());
             int[] results = new int[inputCount];
+            //Main segment loop (calculates every input segment)
             for (int i = 0; i < inputCount; i++)
             {
-                #region Howno
+                #region Input parsing
                 int _buildingsCount = Convert.ToInt32(reader.ReadLine());
                 List<int[]> buildings = new List<int[]>();
-                for (int z = 0; z < _buildingsCount; z++)
+                for (int z = 0; z < _buildingsCount; z++) 
                 {
                     string[] sBuilding = reader.ReadLine().Split(' ');
                     int[] tmp = new int[sBuilding.Length];
@@ -30,8 +31,10 @@ namespace Fiks1
                     }
                     buildings.Add(tmp);
                 }
+                Console.WriteLine("Segment parsed: {0} Contains {1} buildings", i,buildings.Count);
                 #endregion
                 #region Sorting
+                //TODO: Replace with faster sorting algo
                 int[] temp;
                 for (int write = 0; write < buildings.Count; write++)
                 {
@@ -45,12 +48,38 @@ namespace Fiks1
                         }
                     }
                 }
-                Console.WriteLine("Segment: " + Convert.ToString(i));
+                Console.WriteLine("Segment sorted!");
                 #endregion Sorting
                 #region Processing
-                //Todo: Implement main processing logic
+                for (int u = 0; u < buildings.Count; u++) //Loop throught every building
+                {
+                    int indexer = 1;
+                    if(u + indexer < buildings.Count)
+                    while (buildings[u][2] < buildings[u+indexer][1]) //Loop throught every coliding building
+                    {
+                        //Todo: Implement main processing logic (for conflict resolving)
+                        if (buildings[u][0]>buildings[u + indexer][0]) //Is current building highter than following
+                        {
+
+                        }
+                        else //TODO: Check if concept is correct with same heights
+                        {
+
+                        }
+                            if (u + indexer + 1 < buildings.Count) //TODO: check logic (out of range prevention attemp)
+                            { indexer++; }
+                            else { break; }
+                    }
+                }
+                Console.WriteLine("Segment colisions processed");
+                #endregion
+                #region Computing
+                //TODO: Implement building's content computation (and result reporting)
                 #endregion
             }
+
+            Console.WriteLine("All segments done, Press any key to continue");
+            Console.ReadKey();
         }
     }
 }
