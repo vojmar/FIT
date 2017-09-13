@@ -10,3 +10,9 @@ C:\Users\vojmar\Source\Repos\FIT\Fiks1\Fiks1\obj\Debug\Fiks1.pdb
 C:\Users\vojmar\Source\Repos\FIT\Fiks1\Fiks1\bin\Debug\Fiks1.exe
 C:\Users\vojmar\Source\Repos\FIT\Fiks1\Fiks1\bin\Debug\Fiks1.pdb
 C:\Users\vojmar\Source\Repos\FIT\Fiks1\Fiks1\obj\Debug\Fiks1.csprojResolveAssemblyReference.cache
+C:\Users\user\Source\Repos\FIT\Fiks1\Fiks1\bin\Debug\Fiks1.exe.config
+C:\Users\user\Source\Repos\FIT\Fiks1\Fiks1\obj\Debug\Fiks1.exe
+C:\Users\user\Source\Repos\FIT\Fiks1\Fiks1\obj\Debug\Fiks1.pdb
+C:\Users\user\Source\Repos\FIT\Fiks1\Fiks1\bin\Debug\Fiks1.exe
+C:\Users\user\Source\Repos\FIT\Fiks1\Fiks1\bin\Debug\Fiks1.pdb
+C:\Users\user\Source\Repos\FIT\Fiks1\Fiks1\obj\Debug\Fiks1.csprojResolveAssemblyReference.cache
