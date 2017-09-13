@@ -63,19 +63,39 @@ namespace Fiks1
                 {
                     int indexer = 1;
                     if(u + indexer < buildings.Count)
-                    while (buildings[u][2] < buildings[u+indexer][1]) //Loop throught every coliding building
+                    while (buildings[u][2] > buildings[u+indexer][1]) //Loop throught every coliding building
                     {
-                        //Todo: Implement main processing logic (for conflict resolving)
-                        if (buildings[u][0]>buildings[u + indexer][0]) //Is current building highter than following
+                            bool doNext = true; //Do not change indexer if List changed (when building is deleted)
+                             //Todo: Implement main processing logic (for conflict resolving)
+                            if (buildings[u][0]>buildings[u + indexer][0]) //Is current building taller than following
                         {
-
+                                if (buildings[u+indexer][2] <= buildings[u][2]) //building size underrun check
+                                {
+                                    buildings.RemoveAt(u + indexer);
+                                    doNext = false;
+                                }
+                                else
+                                {
+                                    buildings[u + indexer][1] = buildings[u][2];
+                                }
                         }
                         else //TODO: Check if concept is correct with same heights
                         {
-
+                                if (buildings[u][2] <= buildings[u + indexer][2])
+                                {
+                                    buildings[u][2] = buildings[u+indexer][1];
+                                }
+                                else
+                                {
+                                    buildings.Insert(u + indexer+1,new int[] { buildings[u][0], buildings[u + indexer][1] ,buildings[u][2] });
+                                    buildings[u][2] = buildings[u + indexer][1];
+                                }
                         }
                             if (u + indexer + 1 < buildings.Count) //TODO: check logic (out of range prevention attemp)
-                            { indexer++; }
+                            {
+                                if(doNext)
+                                    indexer++;
+                            }
                             else { break; }
                     }
                 }
