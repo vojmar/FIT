@@ -8,9 +8,17 @@ namespace Fiks1
     {
         static void Main(string[] args)
         {
-            StreamReader reader = new StreamReader("./input.txt");
+
+            #region File operations and declaration
+            string inputFile = "./input.txt";
+            string outputFile = "./output.txt";
+            if (args.Length > 0)
+                inputFile = args[0];
+            StreamReader reader = new StreamReader(inputFile);
+            if (File.Exists(outputFile))
+                File.Delete(outputFile); 
+            #endregion
             int inputCount = Convert.ToInt32(reader.ReadLine());
-            int[] results = new int[inputCount];
             //Main segment loop (calculates every input segment)
             for (int i = 0; i < inputCount; i++)
             {
@@ -71,6 +79,18 @@ namespace Fiks1
                 #endregion
                 #region Computing
                 //TODO: Implement building's content computation (and result reporting)
+                ulong result = 0;
+                foreach (var building in buildings)
+                {
+                    result = result + (ulong)(building[2]-building[1])*(ulong)building[0];
+                }
+
+                using (StreamWriter writer = new StreamWriter(outputFile, true)) //Saving results to file
+                {
+                    writer.WriteLine(result);
+                }
+
+                Console.WriteLine("Segment content done. Total size is {0} \n\n", result);
                 #endregion
             }
 
