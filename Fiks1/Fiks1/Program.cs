@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Diagnostics;
 
 namespace Fiks1
 {
@@ -8,13 +9,14 @@ namespace Fiks1
     {
         static void Main(string[] args)
         {
-
             #region File operations and declaration
             string inputFile = "./input.txt";
             string outputFile = "./output.txt";
             if (args.Length > 0)
                 inputFile = args[0];
             StreamReader reader = new StreamReader(inputFile);
+            Stopwatch sw = new Stopwatch();
+            TimeSpan span = new TimeSpan(0);
             if (File.Exists(outputFile))
                 File.Delete(outputFile); 
             #endregion
@@ -22,6 +24,8 @@ namespace Fiks1
             //Main segment loop (calculates every input segment)
             for (int i = 0; i < inputCount; i++)
             {
+                sw.Start();
+                Console.ForegroundColor = ConsoleColor.Red;
                 #region Input parsing
                 int _buildingsCount = Convert.ToInt32(reader.ReadLine());
                 List<int[]> buildings = new List<int[]>();
@@ -35,7 +39,7 @@ namespace Fiks1
                     }
                     buildings.Add(tmp);
                 }
-                Console.WriteLine("Segment parsed: {0} Contains {1} buildings", i,buildings.Count);
+                Console.WriteLine("{2}\t Segment parsed: {0} \t Contains {1} buildings", i,buildings.Count,sw.Elapsed);
                 #endregion
                 #region Sorting
                 //TODO: Replace with faster sorting algo
@@ -52,7 +56,7 @@ namespace Fiks1
                         }
                     }
                 }
-                Console.WriteLine("Segment sorted!");
+                Console.WriteLine("{0}\t Segment sorted!",sw.Elapsed);
                 #endregion Sorting
                 #region Processing
                 for (int u = 0; u < buildings.Count; u++) //Loop throught every building
@@ -75,7 +79,7 @@ namespace Fiks1
                             else { break; }
                     }
                 }
-                Console.WriteLine("Segment colisions processed");
+                Console.WriteLine("{0}\t Segment colisions processed", sw.Elapsed);
                 #endregion
                 #region Computing
                 //TODO: Implement building's content computation (and result reporting)
@@ -89,8 +93,10 @@ namespace Fiks1
                 {
                     writer.WriteLine(result);
                 }
-
-                Console.WriteLine("Segment content done. Total size is {0} \n\n", result);
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("{4}\t Segment {2}/{3} content done. Total size is {0} \nSegment took: {5} \t Progress saved to {1}\n\n", result,outputFile,i,inputCount,sw.Elapsed,sw.Elapsed-span);
+                span = sw.Elapsed;
+                Console.ResetColor();
                 #endregion
             }
 
