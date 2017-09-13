@@ -1,0 +1,6 @@
+c:\users\vojmar\documents\visual studio 2015\Projects\Fiks1\Fiks1\bin\Debug\Fiks1.exe.config
+c:\users\vojmar\documents\visual studio 2015\Projects\Fiks1\Fiks1\bin\Debug\Fiks1.exe
+c:\users\vojmar\documents\visual studio 2015\Projects\Fiks1\Fiks1\bin\Debug\Fiks1.pdb
+c:\users\vojmar\documents\visual studio 2015\Projects\Fiks1\Fiks1\obj\Debug\Fiks1.csprojResolveAssemblyReference.cache
+c:\users\vojmar\documents\visual studio 2015\Projects\Fiks1\Fiks1\obj\Debug\Fiks1.exe
+c:\users\vojmar\documents\visual studio 2015\Projects\Fiks1\Fiks1\obj\Debug\Fiks1.pdb
