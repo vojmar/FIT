@@ -43,19 +43,21 @@ namespace Fiks1
                 #endregion
                 #region Sorting
                 //TODO: Replace with faster sorting algo
-                int[] temp;
-                for (int write = 0; write < buildings.Count; write++)
-                {
-                    for (int sort = 0; sort < buildings.Count - 1; sort++)
-                    {
-                        if (buildings[sort][1] > buildings[sort + 1][1])
-                        {
-                            temp = buildings[sort + 1];
-                            buildings[sort + 1] = buildings[sort];
-                            buildings[sort] = temp;
-                        }
-                    }
-                }
+                //int[] temp;
+                //for (int write = 0; write < buildings.Count; write++)
+                //{
+                //    for (int sort = 0; sort < buildings.Count - 1; sort++)
+                //    {
+                //        if (buildings[sort][1] > buildings[sort + 1][1])
+                //        {
+                //            temp = buildings[sort + 1];
+                //            buildings[sort + 1] = buildings[sort];
+                //            buildings[sort] = temp;
+                //        }
+                //    }
+                //}
+                Quicksort(buildings,0,buildings.Count);
+                buildings.Reverse();
                 Console.WriteLine("{0}\t Segment sorted!",sw.Elapsed);
                 #endregion Sorting
                 #region Processing
@@ -122,6 +124,29 @@ namespace Fiks1
 
             Console.WriteLine("All segments done, Press any key to continue");
             Console.ReadKey();
+        }
+        public static void Quicksort(List<int[]> array, int left, int right)
+        {
+            if (left < right)
+            {
+                int boundary = left;
+                for (int i = left + 1; i < right; i++)
+                {
+                    if (array[i][1] > array[left][1])
+                    {
+                        Swap(array, i, ++boundary);
+                    }
+                }
+                Swap(array, left, boundary);
+                Quicksort(array, left, boundary);
+                Quicksort(array, boundary + 1, right);
+            }
+        }
+        private static void Swap(List<int[]> array, int left, int right)
+        {
+            int[] tmp = array[right];
+            array[right] = array[left];
+            array[left] = tmp;
         }
     }
 }
