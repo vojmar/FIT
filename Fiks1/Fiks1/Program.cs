@@ -61,8 +61,8 @@ namespace Fiks1
                 Console.WriteLine("{0}\t Segment sorted!",sw.Elapsed);
                 #endregion Sorting
                 #region Processing
-                for (int u = 0; u < buildings.Count; u++) //Loop throught every building
-                {
+                for (int u = 0; u < buildings.Count; u++) //Loop throught every building  //TODO: 113 segment je vynechaný z výpočtu, program se ukončí po spočtení 112
+                { 
                     int indexer = 1;
                     if(u + indexer < buildings.Count)
                     while (buildings[u][2] > buildings[u+indexer][1]) //Loop throught every coliding building
