@@ -45,16 +45,17 @@ namespace Fiks2
 
             #region Processing
             //TODO: List of conditions (Need add more and check)
-            // ship.lenght < parameters[0] -> (x) - horizontal
-            // if not
-            // ship.lenght > parameters[0] -> (x) - set on vertical -> parameters[1]
-            // left site default ship1[0,0] ship2[0,1]
-            // ship1.lenght > ship2.lenght -> ship2 = moveable first
-            // right site < parameters[0] && parameters[1]
+            // ( parameters[0] > parameters[2] || parameters[3] ) || ( parameters[1] > parameters[2] || parameters[3] )
+            // 0 < x0 - horizontal < parameters[0] || parameters[1]
+            // 0 < x1 - horizontal < parameters[0] || parameters[1]
+            // 0 < y0 - vertikal < parameters[0] || parameters[1]
+            // 0 < y1 - vertikal < parameters[0] || parameters[1]
+            // x0 > x1
+            // y0 > y1
 
             for (int a = 0; a < parameters[0]; a++) //TODO: Move in columns
             {
-                for (int b = 0; b < parameters[1]; b++)
+                for (int b = a; b > parameters[1]; b--)
                 {
 
                 }
