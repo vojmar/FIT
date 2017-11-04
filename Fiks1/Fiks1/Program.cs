@@ -61,14 +61,19 @@ namespace Fiks1
                 Console.WriteLine("{0}\t Segment sorted!",sw.Elapsed);
                 #endregion Sorting
                 #region Processing
-                for (int u = 0; u < buildings.Count; u++) //Loop throught every building  //TODO: 113 segment je vynechaný z výpočtu, program se ukončí po spočtení 112
-                { 
+                bool doNextu = true;
+                for (int u = 0; u < buildings.Count;  ) //Loop throught every building  //TODO: 113 segment je vynechaný z výpočtu, program se ukončí po spočtení 112
+                {
+                   
+                    if (doNextu)
+                    u++;
+                    doNextu = true;
                     int indexer = 1;
                     if(u + indexer < buildings.Count)
                     while (buildings[u][2] > buildings[u+indexer][1]) //Loop throught every coliding building
                     {
                             bool doNext = true; //Do not change indexer if List changed (when building is deleted)
-                             //Todo: Implement main processing logic (for conflict resolving)
+                            //Todo: Implement main processing logic (for conflict resolving)
                             if (buildings[u][0]>buildings[u + indexer][0]) //Is current building taller than following
                         {
                                 if (buildings[u+indexer][2] <= buildings[u][2]) //building size underrun check
@@ -85,21 +90,30 @@ namespace Fiks1
                         {
                                 if (buildings[u][2] <= buildings[u + indexer][2])
                                 {
-                                    buildings[u][2] = buildings[u+indexer][1];
+                                    if (!(buildings[u + indexer][1] <= buildings[u][1]))
+                                        buildings[u][2] = buildings[u + indexer][1];
+                                    else
+                                    {
+                                        buildings.RemoveAt(u);
+                                        doNextu = false;
+                                    }
                                 }
                                 else
                                 {
-                                    buildings.Insert(u + indexer+1,new int[] { buildings[u][0], buildings[u + indexer][1] ,buildings[u][2] });
+                                    
+                                    buildings.Insert(u + indexer +1,new int[] { buildings[u][0], buildings[u + indexer][2] ,buildings[u][2] });
                                     buildings[u][2] = buildings[u + indexer][1];
                                 }
                         }
+                            
                             if (u + indexer + 1 < buildings.Count) //TODO: check logic (out of range prevention attemp)
                             {
                                 if(doNext)
                                     indexer++;
                             }
                             else { break; }
-                    }
+                            
+                        }
                 }
                 Console.WriteLine("{0}\t Segment colisions processed", sw.Elapsed);
                 #endregion
@@ -108,7 +122,7 @@ namespace Fiks1
                 ulong result = 0;
                 foreach (var building in buildings)
                 {
-                    result = result + (ulong)(building[2]-building[1])*(ulong)building[0];
+                    result =result + (ulong)(building[2]-building[1])*(ulong)building[0];
                 }
 
                 using (StreamWriter writer = new StreamWriter(outputFile, true)) //Saving results to file
